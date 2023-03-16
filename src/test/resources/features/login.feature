@@ -1,3 +1,5 @@
+@smoke @regression @FID10-238 @login
+
 Feature: Login functionality
   Agile story:
   1-Users can log in with valid credentials
@@ -10,7 +12,7 @@ Feature: Login functionality
   Background: Login page
     Given User is on the login page
 
-
+  @FID10-339
   Scenario Outline: Login with valid credentials verification
     When user inputs an email "<email>"
     And user inputs a password "<password>"
@@ -23,7 +25,7 @@ Feature: Login functionality
       | posmanager44@info.com   | posmanager   |
       | posmanager51@info.com   | posmanager   |
 
-
+  @FID10-340
   Scenario Outline: Wrong login message display verification
     When User inputs an email "<email>"
     And User inputs a password "<password>"
@@ -36,7 +38,7 @@ Feature: Login functionality
       | posmanager1@info.com     | posmanager   |
       | posmanager100@info.com   | pomanager    |
 
-@wip
+  @FID10-341
   Scenario Outline: Fill out message display verification
     When User inputs an email "<email>"
     And User inputs a password "<password>"
@@ -47,12 +49,12 @@ Feature: Login functionality
       | posmanager99@info.com |              |
       |                       | salesmanager |
 
-
+  @FID10-342
   Scenario: Password in bullet signs verification
     When user inputs password "salesmanager"
     Then user should see the password in bullet signs by default
 
-
+  @FID10-343
   Scenario: ‘Enter’ key of the keyboard is working correctly on the login page
     When User inputs an email "salesmanager8@info.com"
     And User inputs a password "salesmanager"
