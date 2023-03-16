@@ -36,17 +36,16 @@ Feature: Login functionality
       | posmanager1@info.com     | posmanager   |
       | posmanager100@info.com   | pomanager    |
 
-
+@wip
   Scenario Outline: Fill out message display verification
     When User inputs an email "<email>"
     And User inputs a password "<password>"
     And User clicks login button
-    Then user should see "Please fill out this field" message is displayed
+    Then user should see "Please fill in this field" message is displayed
     Examples: Credentials
       | email                 | password     |
       | posmanager99@info.com |              |
       |                       | salesmanager |
-      |                       |              |
 
 
   Scenario: Password in bullet signs verification

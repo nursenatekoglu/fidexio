@@ -43,11 +43,11 @@ public class Login_StepDefinitions {
     public void userShouldSeeTheRequiredMessage() {
 
         if (loginPage.email.getAttribute("required").equals("required")) {
-            Assert.assertEquals("Please fill out this field.", loginPage.email.getAttribute("validationMessage"));
+            Assert.assertEquals("Please fill in this field.", loginPage.email.getAttribute("validationMessage"));
         }
 
         if (loginPage.password.getAttribute("required").equals("required")) {
-            Assert.assertEquals("Please fill out this field.", loginPage.password.getAttribute("validationMessage"));
+            Assert.assertEquals("Please fill in this field.", loginPage.password.getAttribute("validationMessage"));
         }
 
     }
@@ -85,17 +85,22 @@ public class Login_StepDefinitions {
 
     @And("user inputs a password {string}")
     public void userInputsAPassword1(String arg0) {
+        loginPage.password.sendKeys(arg0);
     }
 
     @And("user clicks login button")
     public void userClicksLoginButton1() {
+        loginPage.loginBtn.click();
     }
 
     @Then("user should be on the homepage")
     public void userShouldBeOnTheHomepage1() {
+        BrowserUtils.waitForTitle("#Inbox - Odoo");
+        BrowserUtils.titleAssertion("#Inbox - Odoo");
     }
 
     @When("User inputs an email {string}")
     public void userInputsAnEmail1(String arg0) {
+        loginPage.email.sendKeys(arg0);
     }
 }

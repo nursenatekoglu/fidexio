@@ -7,24 +7,55 @@ Feature: Login functionality
   5-User should see the password in bullet signs by default
   6- Verify if the ‘Enter’ key of the keyboard is working correctly on the login page
 
-  Scenario: Login with valid credentials verification
-    When user inputs valid credentials
-    Then user should log in
+  Background: Login page
+    Given User is on the login page
 
-  Scenario: Wrong login message display verification
-    When user inputs invalid credentials
+
+  Scenario Outline: Login with valid credentials verification
+    When user inputs an email "<email>"
+    And user inputs a password "<password>"
+    And user clicks login button
+    Then user should be on the homepage
+    Examples: valid credentials
+      | email                   | password     |
+      | salesmanager44@info.com | salesmanager |
+      | salesmanager7@info.com  | salesmanager |
+      | posmanager44@info.com   | posmanager   |
+      | posmanager51@info.com   | posmanager   |
+
+
+  Scenario Outline: Wrong login message display verification
+    When User inputs an email "<email>"
+    And User inputs a password "<password>"
+    And User clicks login button
     Then user should see "Wrong login/password" is displayed
+    Examples: invalid Credentials
+      | email                    | password     |
+      | salesmanage6@info.com    | salesmanager |
+      | salesmanager100@info.com | salesmanage  |
+      | posmanager1@info.com     | posmanager   |
+      | posmanager100@info.com   | pomanager    |
 
-  Scenario: Fill out message display verification
-    When user does not put any password and username
-    Then user should see "Please fill out this field" message is displayed
+@wip
+  Scenario Outline: Fill out message display verification
+    When User inputs an email "<email>"
+    And User inputs a password "<password>"
+    And User clicks login button
+    Then user should see "Please fill in this field" message is displayed
+    Examples: Credentials
+      | email                 | password     |
+      | posmanager99@info.com |              |
+      |                       | salesmanager |
+
 
   Scenario: Password in bullet signs verification
-    When user inputs password
+    When user inputs password "salesmanager"
     Then user should see the password in bullet signs by default
 
-  Scenario: Enter key working correctly verification
-    When user press ‘Enter’ on the login page
-    Then user should see the ‘Enter’ key of the keyboard is working correctly
 
+  Scenario: ‘Enter’ key of the keyboard is working correctly on the login page
+    When User inputs an email "salesmanager8@info.com"
+    And User inputs a password "salesmanager"
+    And User presses enter key
+    Then User should be on the homepage
 

@@ -9,7 +9,7 @@ import org.junit.runner.*;
         features = "src/test/resources/features",
         glue = "com/fidexio/step_definitions",
         dryRun = false,
-        tags = "regression"
+        tags = "@wip"
 
 )
 public class CukesRunner {
