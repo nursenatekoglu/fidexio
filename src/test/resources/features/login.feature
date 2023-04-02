@@ -1,4 +1,4 @@
-@smoke @regression @FID10-238 @login
+@smoke @regression @FID10-238 @login @test-execution
 
 Feature: Login functionality
   Agile story:
